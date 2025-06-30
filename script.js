@@ -120,8 +120,8 @@ document.addEventListener('DOMContentLoaded', () => {
             dots[slideIndex-1].className += " active";
         }
     }
-    // Optional: Auto-cycle slides
-    // setInterval(() => { plusSlides(1); }, 7000); // Change image every 7 seconds
+    // Auto-cycle slides
+    setInterval(() => { plusSlides(1); }, 5000); // Change image every 5 seconds
 
     // Interactive Image Modal Logic
     // Interactive Image Modal Logic (Dudu)
