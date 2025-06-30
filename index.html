@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Sienna!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Happy Birthday, Sienna!</h1>
+    </header>
+    <main>
+        <section id="countdown-section">
+            <h2>Time until your next birthday!</h2>
+            <div id="countdown">
+                <div class="timer-box">
+                    <span id="days"></span>
+                    <p>Days</p>
+                </div>
+                <div class="timer-box">
+                    <span id="hours"></span>
+                    <p>Hours</p>
+                </div>
+                <div class="timer-box">
+                    <span id="minutes"></span>
+                    <p>Minutes</p>
+                </div>
+                <div class="timer-box">
+                    <span id="seconds"></span>
+                    <p>Seconds</p>
+                </div>
+            </div>
+        </section>
+        <section id="gallery-section">
+            <h2>Bubu & Dudu Adventures!</h2>
+            <div class="gallery">
+                <img src="https://i.pinimg.com/originals/c7/a3/8f/c7a38f93b63f6959f712ada2eee9b5otti.jpg" alt="Bubu and Dudu celebrating">
+                <img src="https://i.pinimg.com/originals/5f/c9/6a/5fc96a0d9b3a4de7957c70a99f39412d.jpg" alt="Bubu and Dudu hugging">
+                <img src="https://stickerly.pstatic.net/sticker_pack/JoOAsHhrZMkYj7J2NddKjA/18FNZ8/2/7aa9b91c-17a6-433a-9572-39d647057a6f.png" alt="Bubu waving">
+                <img src="https://cdn.dribbble.com/users/5816541/screenshots/14020979/media/7a03436126e3f87d73a080a1bd991755.png" alt="Dudu with a heart" id="interactiveDudu" style="cursor: pointer;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9Y2jY5bE0X0Y0F8Z6jY5X3E2Q_k7l0P1zQ&usqp=CAU" alt="Bubu and Dudu picnic">
+                <img src="https://i.pinimg.com/736x/b0/f8/6e/b0f86ec0135913802912105598875121.jpg" alt="Bubu and Dudu sleeping">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9gZJ7X0f8NqZ6J4E1YwA5M8l6C0q0bZ1bA&usqp=CAU" alt="Bubu and Dudu with cake">
+                <img src="https://i.pinimg.com/originals/1e/c6/b2/1ec6b2cf4a7a34223e316a9db4889a2a.jpg" alt="Bubu and Dudu playing">
+            </div>
+        </section>
+
+        <section id="messages-section">
+            <h2>Messages for Sienna</h2>
+            <div class="messages-container">
+                <div class="message-card">
+                    <p>"Happy Birthday, Sienna! Hope you have a fantastic day filled with joy and laughter!"</p>
+                    <span>- From a dear friend</span>
+                </div>
+                <div class="message-card">
+                    <p>"To the sweetest girl, happy birthday! May your year be as amazing as you are."</p>
+                    <span>- With love</span>
+                </div>
+                <div class="message-card">
+                    <p>"Wishing you all the happiness in the world on your special day, Sienna!"</p>
+                    <span>- Thinking of you</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="favorite-things-section">
+            <h2>Sienna's Favorite Things! 💖</h2>
+            <ul>
+                <li>Twisted Hate Series (books)</li>
+                <li>BTS (music & everything!)</li>
+                <li>Horimiya (anime)</li>
+                <li>Adorable Cats ᓚᘏᗢ</li>
+                <li>Traveling & Exploring New Places</li>
+            </ul>
+        </section>
+
+        <section id="memories-slideshow-section">
+            <h2>Our Sweet Memories</h2>
+            <div class="slideshow-container">
+                <div class="slide fade">
+                    <img src="https://i.pinimg.com/originals/c7/a3/8f/c7a38f93b63f6959f712ada2eee9b5otti.jpg" alt="Bubu and Dudu happy moment" style="width:100%">
+                    <div class="slide-caption">Always happy together!</div>
+                </div>
+                <div class="slide fade">
+                    <img src="https://i.pinimg.com/originals/5f/c9/6a/5fc96a0d9b3a4de7957c70a99f39412d.jpg" alt="Bubu and Dudu warm hug" style="width:100%">
+                    <div class="slide-caption">Warmest hugs for you!</div>
+                </div>
+                <div class="slide fade">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9Y2jY5bE0X0Y0F8Z6jY5X3E2Q_k7l0P1zQ&usqp=CAU" alt="Bubu and Dudu fun picnic" style="width:100%">
+                    <div class="slide-caption">Fun times and picnics!</div>
+                </div>
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+            <div style="text-align:center; margin-top:10px;">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+            </div>
+        </section>
+    </main>
+
+    <!-- Interactive Dudu Modal -->
+    <div id="interactiveModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button dudu-modal-close">&times;</span>
+            <p id="modalMessageText"></p>
+        </div>
+    </div>
+
+    <!-- Love Note Section -->
+    <section id="love-note-reveal-section">
+        <button id="revealLoveNoteBtn">A Special Note For You, Sienna ❤️</button>
+    </section>
+
+    <!-- Love Note Modal -->
+    <div id="loveNoteModal" class="modal">
+        <div class="modal-content love-note-content">
+            <span class="close-button love-note-modal-close">&times;</span>
+            <h2>My Dearest Sienna,</h2>
+            <p>Happy Birthday, Sienna ❤️</p>
+            <p>From the moment we started talking back in March, you've become so much more than just my girlfriend — you’ve become my safe place, my peace, and my daily reason to smile.</p>
+            <p>I love you for so many reasons, Sienna. Your awkwardly cute smile lights up even my darkest days. The way you support me, the way you're always honest and deeply caring — it's everything I could ever hope for. And your faith in me? It pushes me to be better every single day.</p>
+            <p>Even though we’re miles apart, our connection is real and deep. Talking to you every day, sharing laughs, stories, and dreams — those moments have become the most special part of my life. I wouldn’t trade them for anything.</p>
+            <p>Thank you for being you — for loving me, trusting me, and choosing me. I’m so grateful to walk through life with you, even if it’s long-distance for now. One day, I’ll be holding your hand while saying these words in person.</p>
+            <p>I love you, and I always will.<br>Happy Birthday, my beautiful Sienna</p>
+        </div>
+    </div>
+
+    <!-- Music Section -->
+    <section id="music-section">
+        <h2>Our Special Song</h2>
+        <div class="video-container">
+            <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/CjROPg3QJ7w?list=RDCjROPg3QJ7w&autoplay=1&mute=1&loop=1"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+            </iframe>
+        </div>
+        <p class="music-caption">Hoping this plays automatically to set the mood! If not, just click play. ❤️</p>
+    </section>
+
+    <footer>
+        <p>Made with love for Sienna ❤️</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
