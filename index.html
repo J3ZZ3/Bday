@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
+    <header class="reveal-on-scroll"> <!-- Apply to header too -->
         <h1>Happy Birthday, Sienna!</h1>
     </header>
     <main>
-        <section id="countdown-section">
+        <section id="countdown-section" class="reveal-on-scroll">
             <h2>Time until your next birthday!</h2>
             <div id="countdown">
                 <div class="timer-box">
@@ -32,7 +32,7 @@
                 </div>
             </div>
         </section>
-        <section id="gallery-section">
+        <section id="gallery-section" class="reveal-on-scroll">
             <h2>Bubu & Dudu Adventures!</h2>
             <div class="gallery">
                 <img src="https://i.pinimg.com/originals/c7/a3/8f/c7a38f93b63f6959f712ada2eee9b5otti.jpg" alt="Bubu and Dudu celebrating">
@@ -46,7 +46,7 @@
             </div>
         </section>
 
-        <section id="messages-section">
+        <section id="messages-section" class="reveal-on-scroll">
             <h2>Messages for Sienna</h2>
             <div class="messages-container">
                 <div class="message-card">
@@ -64,18 +64,18 @@
             </div>
         </section>
 
-        <section id="favorite-things-section">
+        <section id="favorite-things-section" class="reveal-on-scroll">
             <h2>Sienna's Favorite Things! 💖</h2>
-            <ul>
-                <li>Twisted Hate Series (books)</li>
-                <li>BTS (music & everything!)</li>
-                <li>Horimiya (anime)</li>
-                <li>Adorable Cats ᓚᘏᗢ</li>
-                <li>Traveling & Exploring New Places</li>
+            <ul id="favoriteThingsList">
+                <li>Twisted Hate Series (books) <span class="fav-icon">📖</span></li>
+                <li>BTS (music & everything!) <span class="fav-icon">💜</span></li>
+                <li>Horimiya (anime) <span class="fav-icon">😊</span></li>
+                <li>Adorable Cats ᓚᘏᗢ <span class="fav-icon">🐾</span></li>
+                <li>Traveling & Exploring New Places <span class="fav-icon">✈️</span></li>
             </ul>
         </section>
 
-        <section id="memories-slideshow-section">
+        <section id="memories-slideshow-section" class="reveal-on-scroll">
             <h2>Our Sweet Memories</h2>
             <div class="slideshow-container">
                 <div class="slide fade">
@@ -110,7 +110,7 @@
     </div>
 
     <!-- Love Note Section -->
-    <section id="love-note-reveal-section">
+    <section id="love-note-reveal-section" class="reveal-on-scroll">
         <button id="revealLoveNoteBtn">A Special Note For You, Sienna ❤️</button>
     </section>
 
@@ -129,7 +129,7 @@
     </div>
 
     <!-- Music Section -->
-    <section id="music-section">
+    <section id="music-section" class="reveal-on-scroll">
         <h2>Our Special Song</h2>
         <div class="video-container">
             <iframe
@@ -145,7 +145,7 @@
         <p class="music-caption">Hoping this plays automatically to set the mood! If not, just click play. ❤️</p>
     </section>
 
-    <footer>
+    <footer class="reveal-on-scroll">
         <p>Made with love for Sienna ❤️</p>
     </footer>
     <script src="script.js"></script>

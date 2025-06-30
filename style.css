@@ -5,7 +5,81 @@ body {
     background-color: #FFF8DC; /* Light yellow - Bubu's fur */
     color: #5D4037; /* Brown - Dudu's fur */
     text-align: center;
+    /* Default white cat cursor */
+    cursor: url('https://www.transparentpng.com/thumb/cat/Jg018Y-cat-white-cute-simple-transparent-image.png') 16 16, auto;
+    transition: background-color 0.8s ease-in-out; /* For smooth background color changes */
+    position: relative; /* Needed for z-index of pseudo-elements */
+    overflow-x: hidden; /* Prevent horizontal scroll if pseudo-elements are too wide */
 }
+
+body::before {
+    content: '';
+    position: fixed; /* Fixed to viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Behind all other content */
+    background: linear-gradient(
+        45deg,
+        rgba(255, 230, 230, 0.3),
+        rgba(230, 230, 255, 0.3),
+        rgba(230, 255, 230, 0.3)
+    );
+    background-size: 400% 400%;
+    animation: subtleGradientShift 20s ease infinite;
+}
+
+@keyframes subtleGradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Scroll-Reveal Animations */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(30px); /* Start slightly lower */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* Class for a red cat cursor - can be applied with JS later */
+.red-cat-cursor {
+    cursor: url('https://www.transparentpng.com/thumb/cat/2K4EPa-red-cat-icon-clipart.png') 16 16, auto; /* Placeholder red cat */
+}
+
+/* Ensure interactive elements also get the custom cursor, or a pointer if preferred */
+a, button, .timer-box, .gallery img, .message-card, .slide, .prev, .next, .dot, #interactiveDudu, #revealLoveNoteBtn {
+    /* Inherit the body cursor or specify if a different one is needed e.g. pointer */
+    /* For now, let's make them use pointer to indicate clickability distinctly from the themed cursor */
+    cursor: pointer;
+}
+/* Override for the main Dudu interactive image to ensure it uses the custom cursor before click if desired, or keep as pointer */
+#interactiveDudu {
+    /* Let's keep pointer for now on this specific interactive element */
+    /* cursor: url('https://www.transparentpng.com/thumb/cat/Jg018Y-cat-white-cute-simple-transparent-image.png') 16 16, auto; */
+}
+
+/* Mouse-Tracking Sparkle Effect */
+.sparkle {
+    position: fixed; /* Fixed positioning to follow mouse anywhere */
+    width: 8px;
+    height: 8px;
+    background-color: #FFD700; /* Gold color for sparkles */
+    border-radius: 50%;
+    pointer-events: none; /* So they don't block mouse events on other elements */
+    z-index: 9999; /* Above most other elements */
+    opacity: 0;
+    transition: opacity 0.3s ease-out, transform 0.1s ease-out; /* Smooth fade and movement */
+    transform: scale(0.5); /* Start small */
+}
+
 
 header {
     background-color: #FFD700; /* Gold - cheerful color */
@@ -18,6 +92,8 @@ header h1 {
     font-size: 2.5em;
     color: #fff;
     text-shadow: 2px 2px 4px #5D4037;
+    transition: transform 0.1s ease-out; /* For smooth parallax effect */
+    transform-style: preserve-3d; /* Needed for 3D transforms like rotateX/Y */
 }
 
 main {
@@ -73,11 +149,12 @@ main {
     border-radius: 10px;
     border: 3px solid #FFA500;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease; /* Smoother/bouncier transition */
 }
 
 #gallery-section .gallery img:hover {
-    transform: scale(1.05);
+    transform: scale(1.08) rotate(3deg); /* Scale more and add slight rotation */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25); /* Enhance shadow for more pop */
 }
 
 footer {
@@ -125,6 +202,12 @@ footer p {
     width: 280px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     text-align: left;
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+
+.message-card:hover {
+    transform: translateY(-8px) rotate(-1deg); /* Lift up and tilt slightly */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
 }
 
 .message-card p {
@@ -386,10 +469,7 @@ footer p {
     font-style: italic;
 }
 
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-/* Favorite Things Section */
+/* Favorite Things Section - GLOBAL STYLES */
 #favorite-things-section {
     margin-top: 40px;
     padding: 20px;
@@ -420,16 +500,37 @@ footer p {
     font-size: 1.1em;
     color: #483D8B; /* DarkSlateBlue */
     box-shadow: 0 2px 4px rgba(0,0,0,0.08);
-    transition: transform 0.2s ease-in-out;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s ease, border-color 0.3s ease; /* Bouncy transition */
 }
 
 #favorite-things-section li:hover {
-    transform: translateX(5px);
+    transform: translateX(8px) scale(1.03); /* Move further and scale slightly */
+    background-color: #fff8e1; /* Light yellow tint on hover */
+    border-color: #FFC107; /* Amber border highlight */
+}
+
+#favorite-things-section li .fav-icon {
+    display: inline-block;
+    margin-left: 10px;
+    opacity: 0;
+    transform: translateX(-10px) scale(0.8);
+    transition: opacity 0.3s ease-out, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    font-size: 1.2em; /* Make icon a bit bigger */
+}
+
+#favorite-things-section li:hover .fav-icon {
+    opacity: 1;
+    transform: translateX(0) scale(1);
 }
 
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+    /* Specific adjustments for favorite things on smaller screens, if any, can go here */
+    /* For example, if font size needed to be smaller:
+    #favorite-things-section h2 { font-size: 1.6em; }
+    #favorite-things-section li { font-size: 1em; padding: 10px 15px; }
+    */
     header h1 {
         font-size: 2em;
     }
