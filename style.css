@@ -22,12 +22,14 @@ body::before {
     z-index: -1; /* Behind all other content */
     background: linear-gradient(
         45deg,
-        rgba(255, 230, 230, 0.3),
-        rgba(230, 230, 255, 0.3),
-        rgba(230, 255, 230, 0.3)
+        rgba(255, 192, 203, 0.3), /* Pink */
+        rgba(255, 218, 185, 0.3), /* Peach Puff */
+        rgba(230, 230, 250, 0.25), /* Lavender (slightly more visible) */
+        rgba(255, 223, 186, 0.3), /* Light Golden/Peach */
+        rgba(255, 192, 203, 0.3)  /* Pink again to help with smooth looping */
     );
-    background-size: 400% 400%;
-    animation: subtleGradientShift 20s ease infinite;
+    background-size: 600% 600%; /* Larger size for smoother, slower animation over more 'area' */
+    animation: subtleGradientShift 25s ease infinite; /* Slightly longer animation duration */
 }
 
 @keyframes subtleGradientShift {
