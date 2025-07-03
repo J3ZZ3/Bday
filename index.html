@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
+    <header class="reveal-on-scroll"> <!-- Apply to header too -->
         <h1>Happy Birthday, Sienna!</h1>
     </header>
     <main>
-        <section id="countdown-section">
+        <section id="countdown-section" class="reveal-on-scroll">
             <h2>Time until your next birthday!</h2>
             <div id="countdown">
                 <div class="timer-box">
@@ -32,21 +32,21 @@
                 </div>
             </div>
         </section>
-        <section id="gallery-section">
-            <h2>Bubu & Dudu Adventures!</h2>
+        <section id="gallery-section" class="reveal-on-scroll">
+            <h2>What To Expect For The Future!</h2>
             <div class="gallery">
-                <img src="https://i.pinimg.com/originals/c7/a3/8f/c7a38f93b63f6959f712ada2eee9b5otti.jpg" alt="Bubu and Dudu celebrating">
-                <img src="https://i.pinimg.com/originals/5f/c9/6a/5fc96a0d9b3a4de7957c70a99f39412d.jpg" alt="Bubu and Dudu hugging">
-                <img src="https://stickerly.pstatic.net/sticker_pack/JoOAsHhrZMkYj7J2NddKjA/18FNZ8/2/7aa9b91c-17a6-433a-9572-39d647057a6f.png" alt="Bubu waving">
-                <img src="https://cdn.dribbble.com/users/5816541/screenshots/14020979/media/7a03436126e3f87d73a080a1bd991755.png" alt="Dudu with a heart" id="interactiveDudu" style="cursor: pointer;">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9Y2jY5bE0X0Y0F8Z6jY5X3E2Q_k7l0P1zQ&usqp=CAU" alt="Bubu and Dudu picnic">
-                <img src="https://i.pinimg.com/736x/b0/f8/6e/b0f86ec0135913802912105598875121.jpg" alt="Bubu and Dudu sleeping">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9gZJ7X0f8NqZ6J4E1YwA5M8l6C0q0bZ1bA&usqp=CAU" alt="Bubu and Dudu with cake">
-                <img src="https://i.pinimg.com/originals/1e/c6/b2/1ec6b2cf4a7a34223e316a9db4889a2a.jpg" alt="Bubu and Dudu playing">
+                <img src="https://i.pinimg.com/736x/de/af/01/deaf01c16c99b6420929ba32af344ad3.jpg" alt="Hori and Miyamura close-up">
+                <img src="https://i.pinimg.com/736x/21/66/58/216658392e4574fb1197453e26529969.jpg" alt="Horimiya group shot">
+                <img src="https://i.pinimg.com/736x/8a/00/9b/8a009b0a034f2acbbecc5d9afcc4d3b6.jpg" alt="Miyamura smiling">
+                <img src="https://i.pinimg.com/736x/be/b7/c0/beb7c0f842c45f7521e15822fa821e52.jpg" alt="Hori blushing" id="interactiveDudu" style="cursor: pointer;"> <!-- Retaining ID for interactivity, though image changed -->
+                <img src="https://i.pinimg.com/736x/9b/c6/d4/9bc6d40fcf3d5d6950f4523eb3331c6c.jpg" alt="Toru Ishikawa from Horimiya">
+                <img src="https://i.pinimg.com/736x/fe/25/8a/fe258aabf2bd81d8488a443f64dc0932.jpg" alt="Yuki Yoshikawa from Horimiya">
+                <img src="https://i.pinimg.com/736x/2f/a7/93/2fa7931ffc36fb0a4636f58de6a8dae2.jpg" alt="Kakeru Sengoku from Horimiya">
+                <img src="https://i.pinimg.com/736x/4a/b5/50/4ab550d162d6c4c0f50e96ac01d4e897.jpg" alt="Remi Ayasaki from Horimiya">
             </div>
         </section>
 
-        <section id="messages-section">
+        <section id="messages-section" class="reveal-on-scroll">
             <h2>Messages for Sienna</h2>
             <div class="messages-container">
                 <div class="message-card">
@@ -64,40 +64,15 @@
             </div>
         </section>
 
-        <section id="favorite-things-section">
+        <section id="favorite-things-section" class="reveal-on-scroll">
             <h2>Sienna's Favorite Things! 💖</h2>
-            <ul>
-                <li>Twisted Hate Series (books)</li>
-                <li>BTS (music & everything!)</li>
-                <li>Horimiya (anime)</li>
-                <li>Adorable Cats ᓚᘏᗢ</li>
-                <li>Traveling & Exploring New Places</li>
+            <ul id="favoriteThingsList">
+                <li>Twisted Hate Series (books) <span class="fav-icon">📖</span></li>
+                <li>BTS (music & everything!) <span class="fav-icon">💜</span></li>
+                <li>Horimiya (anime) <span class="fav-icon">😊</span></li>
+                <li>Adorable Cats ᓚᘏᗢ <span class="fav-icon">🐾</span></li>
+                <li>Traveling & Exploring New Places <span class="fav-icon">✈️</span></li>
             </ul>
-        </section>
-
-        <section id="memories-slideshow-section">
-            <h2>Our Sweet Memories</h2>
-            <div class="slideshow-container">
-                <div class="slide fade">
-                    <img src="https://i.pinimg.com/originals/c7/a3/8f/c7a38f93b63f6959f712ada2eee9b5otti.jpg" alt="Bubu and Dudu happy moment" style="width:100%">
-                    <div class="slide-caption">Always happy together!</div>
-                </div>
-                <div class="slide fade">
-                    <img src="https://i.pinimg.com/originals/5f/c9/6a/5fc96a0d9b3a4de7957c70a99f39412d.jpg" alt="Bubu and Dudu warm hug" style="width:100%">
-                    <div class="slide-caption">Warmest hugs for you!</div>
-                </div>
-                <div class="slide fade">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9Y2jY5bE0X0Y0F8Z6jY5X3E2Q_k7l0P1zQ&usqp=CAU" alt="Bubu and Dudu fun picnic" style="width:100%">
-                    <div class="slide-caption">Fun times and picnics!</div>
-                </div>
-                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                <a class="next" onclick="plusSlides(1)">&#10095;</a>
-            </div>
-            <div style="text-align:center; margin-top:10px;">
-                <span class="dot" onclick="currentSlide(1)"></span>
-                <span class="dot" onclick="currentSlide(2)"></span>
-                <span class="dot" onclick="currentSlide(3)"></span>
-            </div>
         </section>
     </main>
 
@@ -110,7 +85,7 @@
     </div>
 
     <!-- Love Note Section -->
-    <section id="love-note-reveal-section">
+    <section id="love-note-reveal-section" class="reveal-on-scroll">
         <button id="revealLoveNoteBtn">A Special Note For You, Sienna ❤️</button>
     </section>
 
@@ -129,23 +104,18 @@
     </div>
 
     <!-- Music Section -->
-    <section id="music-section">
-        <h2>Our Special Song</h2>
-        <div class="video-container">
-            <iframe
-                width="560"
-                height="315"
-                src="https://www.youtube.com/embed/CjROPg3QJ7w?list=RDCjROPg3QJ7w&autoplay=1&mute=1&loop=1"
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-            </iframe>
+    <section id="music-section" class="reveal-on-scroll">
+        <h2>Special Song</h2>
+        <div class="audio-container">
+            <audio id="birthdayAudio" controls autoplay loop>
+                <source src="assets/song.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
         </div>
-        <p class="music-caption">Hoping this plays automatically to set the mood! If not, just click play. ❤️</p>
+        <p class="music-caption">Playing our special song for you! ❤️</p>
     </section>
 
-    <footer>
+    <footer class="reveal-on-scroll">
         <p>Made with love for Sienna ❤️</p>
     </footer>
     <script src="script.js"></script>

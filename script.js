@@ -35,10 +35,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const minutes = Math.floor(totalSeconds / 60) % 60;
         const seconds = Math.floor(totalSeconds) % 60;
 
-        daysEl.innerText = days;
-        hoursEl.innerText = formatTime(hours);
-        minutesEl.innerText = formatTime(minutes);
-        secondsEl.innerText = formatTime(seconds);
+        // Hide countdown if it's her birthday
+        const countdownSection = document.getElementById('countdown-section');
+        if (now.getMonth() === siennaBirthdayMonth && now.getDate() === siennaBirthdayDay) {
+            if (countdownSection) countdownSection.style.display = 'none';
+        } else {
+            if (countdownSection) countdownSection.style.display = '';
+            daysEl.innerText = days;
+            hoursEl.innerText = formatTime(hours);
+            minutesEl.innerText = formatTime(minutes);
+            secondsEl.innerText = formatTime(seconds);
+        }
 
         // Update age if it's her birthday
         if (now.getMonth() === siennaBirthdayMonth && now.getDate() === siennaBirthdayDay) {
@@ -51,14 +58,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     headerTitle.textContent = "Happy Birthday, Sienna!";
                 }
                 // Prevent duplicate age display
-                if (!headerTitle.textContent.includes(`She is ${age} today!`)) {
-                     headerTitle.textContent += ` She is ${age} today!`;
+                if (!headerTitle.textContent.includes(`You're ${age} today!`)) {
+                     headerTitle.textContent += ` You're ${age} today!`;
                 }
             }
         } else {
             // Reset header if it's not her birthday
             const headerTitle = document.querySelector('header h1');
-            if (headerTitle && headerTitle.textContent.includes("She is")) {
+            if (headerTitle && headerTitle.textContent.includes("You're")) {
                 headerTitle.textContent = "Happy Birthday, Sienna!";
             }
         }
@@ -120,8 +127,8 @@ document.addEventListener('DOMContentLoaded', () => {
             dots[slideIndex-1].className += " active";
         }
     }
-    // Optional: Auto-cycle slides
-    // setInterval(() => { plusSlides(1); }, 7000); // Change image every 7 seconds
+    // Auto-cycle slides
+    setInterval(() => { plusSlides(1); }, 5000); // Change image every 5 seconds
 
     // Interactive Image Modal Logic
     // Interactive Image Modal Logic (Dudu)
@@ -166,5 +173,166 @@ document.addEventListener('DOMContentLoaded', () => {
         if (event.target == loveNoteModal) {
             loveNoteModal.style.display = "none";
         }
+    }
+
+    // Scroll-based background color change
+    const sections = [
+        { id: 'countdown-section', color: '#FFFACD' }, // LemonChiffon
+        { id: 'gallery-section', color: '#F0FFF0' },   // Honeydew
+        { id: 'messages-section', color: '#FFF0F5' },  // LavenderBlush
+        { id: 'favorite-things-section', color: '#E6E6FA' }, // Lavender
+        { id: 'memories-slideshow-section', color: '#F0F8FF' }, // AliceBlue
+        { id: 'love-note-reveal-section', color: '#FFE4E1' }, // MistyRose
+        { id: 'music-section', color: '#FAFAD2' }       // LightGoldenrodYellow
+    ];
+
+    const defaultBackgroundColor = '#FFF8DC'; // Original body background
+
+    if ('IntersectionObserver' in window) {
+        const observerOptions = {
+            root: null, // relative to document viewport
+            rootMargin: '0px',
+            threshold: 0.5 // 50% of the section is visible
+        };
+
+        const body = document.body;
+
+        sections.forEach(sectionInfo => {
+            const targetSection = document.getElementById(sectionInfo.id);
+            if (targetSection) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            body.style.backgroundColor = sectionInfo.color;
+                        }
+                    });
+                }, observerOptions);
+                observer.observe(targetSection);
+            }
+        });
+
+        // Optional: Revert to default if no specific section is "dominant"
+        // This is more complex; for now, the last intersected section's color will persist.
+        // A more robust solution might involve tracking the "most visible" section or
+        // reverting to default when scrolling to top/header or footer.
+
+        // Simple revert to default when near the top (e.g. header is visible)
+        const header = document.querySelector('header');
+        if (header) {
+            const headerObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        body.style.backgroundColor = defaultBackgroundColor;
+                    }
+                });
+            }, { threshold: 0.75 }); // When header is mostly visible
+            headerObserver.observe(header);
+        }
+
+    } else {
+        console.log("Intersection Observer not supported, background won't change on scroll.");
+    }
+
+    // Scroll-reveal animations
+    if ('IntersectionObserver' in window) {
+        const revealElements = document.querySelectorAll('.reveal-on-scroll');
+
+        const revealObserverOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1 // At least 10% of the element is visible
+        };
+
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    // Optional: unobserve after revealing to prevent re-triggering and save resources
+                    // observer.unobserve(entry.target);
+                }
+                // Optional: remove 'revealed' class if element scrolls out of view to re-animate
+                // else {
+                //    entry.target.classList.remove('revealed');
+                // }
+            });
+        }, revealObserverOptions);
+
+        revealElements.forEach(el => {
+            revealObserver.observe(el);
+        });
+    } else {
+        // Fallback for older browsers: just make them visible
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => {
+            el.classList.add('revealed');
+        });
+        console.log("Intersection Observer not supported, scroll reveal animations won't be as smooth.");
+    }
+
+    // Mouse-Tracking Sparkle Effect
+    const NUM_SPARKLES = 5; // Number of sparkles in the trail
+    const sparkles = [];
+    let sparkleIndex = 0;
+    let lastMouseX = 0;
+    let lastMouseY = 0;
+    let lastMoveTime = 0;
+
+    for (let i = 0; i < NUM_SPARKLES; i++) {
+        let sparkle = document.createElement('div');
+        sparkle.classList.add('sparkle');
+        document.body.appendChild(sparkle);
+        sparkles.push(sparkle);
+    }
+
+    document.addEventListener('mousemove', function(e) {
+        const currentTime = Date.now();
+        // Only update if mouse has moved significantly or enough time has passed
+        // This helps to prevent too many updates and makes the trail effect more apparent
+        const distanceMoved = Math.sqrt(Math.pow(e.pageX - lastMouseX, 2) + Math.pow(e.pageY - lastMouseY, 2));
+
+        if (distanceMoved > 2 || (currentTime - lastMoveTime > 30)) { // Adjust sensitivity
+            lastMouseX = e.pageX;
+            lastMouseY = e.pageY;
+            lastMoveTime = currentTime;
+
+            const currentSparkle = sparkles[sparkleIndex];
+
+            currentSparkle.style.left = e.pageX + 'px';
+            currentSparkle.style.top = e.pageY + 'px';
+            currentSparkle.style.opacity = '1';
+            currentSparkle.style.transform = 'scale(1) translate(-50%, -50%)'; // Center on cursor & scale up
+
+            // Trigger fade out after a short delay
+            setTimeout(() => {
+                currentSparkle.style.opacity = '0';
+                currentSparkle.style.transform = 'scale(0.5) translate(-50%, -50%)'; // Shrink
+            }, 200); // Sparkle visible duration
+
+            sparkleIndex = (sparkleIndex + 1) % NUM_SPARKLES; // Cycle through sparkles
+        }
+    });
+
+    // Optional: Hide sparkles if mouse leaves window (might be desired)
+    document.addEventListener('mouseleave', function() {
+        sparkles.forEach(s => {
+            s.style.opacity = '0';
+            s.style.transform = 'scale(0.5) translate(-50%, -50%)';
+        });
+    });
+
+    // Subtle 3D Tilt Effect on Header H1
+    const headerH1 = document.querySelector('header h1');
+    if (headerH1) {
+        document.addEventListener('mousemove', function(e) {
+            const { clientWidth, clientHeight } = document.documentElement;
+            const xRelativeToCenter = (e.clientX - clientWidth / 2) / (clientWidth / 2); // -1 to 1
+            const yRelativeToCenter = (e.clientY - clientHeight / 2) / (clientHeight / 2); // -1 to 1
+
+            const maxRotation = 5; // Max rotation in degrees
+            const rotateY = xRelativeToCenter * maxRotation;
+            const rotateX = -yRelativeToCenter * maxRotation; // Invert Y for natural feel
+
+            // Apply a subtle perspective and translateZ to enhance the 3D effect
+            headerH1.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
+        });
     }
 });
