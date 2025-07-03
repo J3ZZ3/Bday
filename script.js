@@ -35,10 +35,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const minutes = Math.floor(totalSeconds / 60) % 60;
         const seconds = Math.floor(totalSeconds) % 60;
 
-        daysEl.innerText = days;
-        hoursEl.innerText = formatTime(hours);
-        minutesEl.innerText = formatTime(minutes);
-        secondsEl.innerText = formatTime(seconds);
+        // Hide countdown if it's her birthday
+        const countdownSection = document.getElementById('countdown-section');
+        if (now.getMonth() === siennaBirthdayMonth && now.getDate() === siennaBirthdayDay) {
+            if (countdownSection) countdownSection.style.display = 'none';
+        } else {
+            if (countdownSection) countdownSection.style.display = '';
+            daysEl.innerText = days;
+            hoursEl.innerText = formatTime(hours);
+            minutesEl.innerText = formatTime(minutes);
+            secondsEl.innerText = formatTime(seconds);
+        }
 
         // Update age if it's her birthday
         if (now.getMonth() === siennaBirthdayMonth && now.getDate() === siennaBirthdayDay) {
@@ -51,14 +58,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     headerTitle.textContent = "Happy Birthday, Sienna!";
                 }
                 // Prevent duplicate age display
-                if (!headerTitle.textContent.includes(`She is ${age} today!`)) {
-                     headerTitle.textContent += ` She is ${age} today!`;
+                if (!headerTitle.textContent.includes(`You're ${age} today!`)) {
+                     headerTitle.textContent += ` You're ${age} today!`;
                 }
             }
         } else {
             // Reset header if it's not her birthday
             const headerTitle = document.querySelector('header h1');
-            if (headerTitle && headerTitle.textContent.includes("She is")) {
+            if (headerTitle && headerTitle.textContent.includes("You're")) {
                 headerTitle.textContent = "Happy Birthday, Sienna!";
             }
         }
