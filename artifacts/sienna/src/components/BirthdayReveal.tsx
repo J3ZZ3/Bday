@@ -202,8 +202,51 @@ export default function BirthdayReveal() {
           </section>
         </FilmFrame>
 
-        {/* Scene 05 — CTA (left) */}
-        <FilmFrame frameNumber={5} label="SECRET NOTE" direction="left" delay={0}>
+        {/* Scene 05 — Spotify playlist (right) */}
+        <FilmFrame frameNumber={5} label="OUR PLAYLIST" direction="right" delay={0}>
+          <section>
+            <div className="flex items-center gap-3 mb-5">
+              <div className="h-px flex-1 bg-gradient-to-r from-transparent to-pink-200" />
+              <h2
+                className="font-serif text-xl font-bold text-pink-600 whitespace-nowrap"
+                style={{ fontFamily: "'Playfair Display', serif" }}
+              >
+                Songs For Us 🎵
+              </h2>
+              <div className="h-px flex-1 bg-gradient-to-l from-transparent to-pink-200" />
+            </div>
+
+            <div
+              className="glass-card rounded-3xl overflow-hidden shadow-lg"
+              style={{ border: "1px solid rgba(244,114,182,0.25)", padding: "1px" }}
+            >
+              {/* Themed top bar */}
+              <div
+                className="flex items-center gap-2 px-4 py-2.5 rounded-t-3xl"
+                style={{ background: "linear-gradient(90deg, rgba(219,39,119,0.12), rgba(168,85,247,0.12))" }}
+              >
+                <span style={{ fontSize: "16px", filter: "drop-shadow(0 0 4px #ec4899)" }}>🎧</span>
+                <span className="text-xs font-semibold tracking-widest uppercase text-pink-500">Made for us</span>
+                <span className="ml-auto text-xs text-pink-300 animate-heartbeat inline-block">♥</span>
+              </div>
+
+              {/* Spotify embed — theme=0 gives dark player which contrasts nicely */}
+              <iframe
+                style={{ borderRadius: "0 0 24px 24px", display: "block" }}
+                src="https://open.spotify.com/embed/playlist/4gprUU6LyEh2cK3FyhRJYS?utm_source=generator&theme=0"
+                width="100%"
+                height="352"
+                frameBorder="0"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"
+              />
+            </div>
+          </section>
+        </FilmFrame>
+
+        {/* Scene 06 — CTA (left) */}
+        <FilmFrame frameNumber={6} label="SECRET NOTE" direction="left" delay={0}>
+
           <section className="text-center">
             <p className="text-pink-400 text-sm mb-5 italic">
               One more thing — just for your eyes...
@@ -228,8 +271,8 @@ export default function BirthdayReveal() {
           </section>
         </FilmFrame>
 
-        {/* Scene 06 — Footer (right) */}
-        <FilmFrame frameNumber={6} label="THE END ♥" direction="right" delay={0}>
+        {/* Scene 07 — Footer (right) */}
+        <FilmFrame frameNumber={7} label="THE END ♥" direction="right" delay={0}>
           <section className="text-center pb-4">
             <div className="flex items-center justify-center gap-2 text-pink-400 text-sm font-medium">
               <span>Made with</span>
