@@ -233,7 +233,7 @@ export default function BirthdayReveal() {
               {/* Spotify embed — theme=0 gives dark player which contrasts nicely */}
               <iframe
                 style={{ borderRadius: "0 0 24px 24px", display: "block" }}
-                src="https://open.spotify.com/embed/playlist/4gprUU6LyEh2cK3FyhRJYS?utm_source=generator&theme=0"
+                src="https://open.spotify.com/embed/playlist/4gprUU6LyEh2cK3FyhRJYS?utm_source=generator"
                 width="100%"
                 height="352"
                 frameBorder="0"
