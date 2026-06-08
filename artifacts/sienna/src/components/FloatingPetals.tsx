@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
-
-const PETALS = ["🌸", "✿", "❀", "♥", "✦", "·", "°", "✿"];
+import { useMemo } from "react";
 
 interface Petal {
   id: number;
@@ -10,24 +8,24 @@ interface Petal {
   delay: string;
   size: string;
   opacity: number;
+  color: string;
 }
 
-function makePetal(id: number): Petal {
-  return {
-    id,
-    symbol: PETALS[Math.floor(Math.random() * PETALS.length)],
-    left: `${Math.random() * 100}%`,
-    duration: `${8 + Math.random() * 12}s`,
-    delay: `${Math.random() * 10}s`,
-    size: `${0.6 + Math.random() * 1.2}rem`,
-    opacity: 0.2 + Math.random() * 0.5,
-  };
-}
+const PETALS  = ["🌸", "✿", "❀", "♥", "✦", "✧", "★", "·", "◆", "✺", "❋"];
+const COLORS  = ["#f9a8d4", "#e879f9", "#c084fc", "#fb7185", "#f472b6", "#fde68a", "#a78bfa"];
 
-export default function FloatingPetals() {
-  const [petals] = useState<Petal[]>(() =>
-    Array.from({ length: 18 }, (_, i) => makePetal(i))
-  );
+export default function FloatingPetals({ count = 22 }: { count?: number }) {
+  const petals = useMemo<Petal[]>(() =>
+    Array.from({ length: count }, (_, i) => ({
+      id: i,
+      symbol: PETALS[i % PETALS.length],
+      left: `${Math.random() * 100}%`,
+      duration: `${7 + Math.random() * 14}s`,
+      delay: `${Math.random() * 12}s`,
+      size: `${0.7 + Math.random() * 1.4}rem`,
+      opacity: 0.25 + Math.random() * 0.6,
+      color: COLORS[i % COLORS.length],
+    })), [count]);
 
   return (
     <div className="pointer-events-none fixed inset-0 overflow-hidden" aria-hidden="true">
@@ -42,7 +40,8 @@ export default function FloatingPetals() {
             opacity: p.opacity,
             animationDuration: p.duration,
             animationDelay: p.delay,
-            color: ["#f9a8d4", "#e879f9", "#c084fc", "#fb7185", "#f472b6"][p.id % 5],
+            color: p.color,
+            filter: `drop-shadow(0 0 4px ${p.color})`,
           }}
         >
           {p.symbol}
