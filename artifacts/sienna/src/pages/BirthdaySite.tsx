@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import CountdownPage from "@/components/CountdownPage";
 import BirthdayReveal from "@/components/BirthdayReveal";
 import MagicTransition from "@/components/MagicTransition";
-import SparkleTrail from "@/components/SparkleTrail";
+import CuteCursor from "@/components/CuteCursor";
 
 const BIRTHDAY_MONTH = 7;
 const BIRTHDAY_DAY   = 3;
@@ -26,7 +26,6 @@ export default function BirthdaySite() {
   }, []);
 
   const handleToggle = useCallback(() => {
-    // Start exit animation on current page
     setPageClass("page-exiting");
     setTimeout(() => {
       setPhase("transitioning");
@@ -57,7 +56,7 @@ export default function BirthdaySite() {
       onClick={phase === "idle" ? handleToggle : undefined}
       disabled={phase !== "idle"}
       className="fixed bottom-4 right-4 z-[9998] flex items-center gap-2 bg-black/70 hover:bg-black/90 disabled:opacity-50 text-white text-xs font-mono px-4 py-2.5 rounded-full shadow-xl backdrop-blur-sm transition-all hover:scale-105 active:scale-95"
-      style={{ border: "1px solid rgba(255,255,255,0.15)" }}
+      style={{ border: "1px solid rgba(255,255,255,0.15)", cursor: "none" }}
     >
       {showBirthday
         ? <><span>🔒</span> Preview: Birthday ON</>
@@ -68,7 +67,7 @@ export default function BirthdaySite() {
 
   return (
     <>
-      <SparkleTrail />
+      <CuteCursor />
 
       <div className={pageClass} style={{ minHeight: "100vh" }}>
         {showBirthday ? <BirthdayReveal /> : <CountdownPage />}
