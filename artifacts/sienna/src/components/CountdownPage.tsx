@@ -106,10 +106,10 @@ export default function CountdownPage() {
       <GlowOrbs />
       <FloatingPetals count={26} />
 
-      <div className="relative z-10 flex flex-col items-center text-center max-w-2xl mx-auto gap-8">
+      <div className="relative z-10 flex flex-col items-center text-center max-w-2xl mx-auto gap-10">
 
-        {/* Frame 01 — Badge + Title */}
-        <FilmFrame frameNumber={1} label="SCENE · FOR SIENNA" direction="center" delay={100}>
+        {/* Scene 01 — Badge + Title (slides from left) */}
+        <FilmFrame frameNumber={1} label="FOR SIENNA" direction="left" delay={100}>
           <div className="flex flex-col items-center gap-5">
             <div className="glass-card rounded-full px-4 py-1.5 flex items-center gap-2 shadow"
               style={{ animation: "scale-in 0.5s cubic-bezier(.34,1.56,.64,1) 0.1s both" }}>
@@ -129,8 +129,8 @@ export default function CountdownPage() {
           </div>
         </FilmFrame>
 
-        {/* Frame 02 — Countdown */}
-        <FilmFrame frameNumber={2} label="COUNTDOWN" direction="up" delay={300}>
+        {/* Scene 02 — Countdown (slides from right) */}
+        <FilmFrame frameNumber={2} label="COUNTDOWN" direction="right" delay={300}>
           <div className="grid grid-cols-4 gap-3 sm:gap-5 w-full max-w-md">
             {LABELS.map(({ key, label }, i) => {
               const u = units[key];
@@ -163,12 +163,13 @@ export default function CountdownPage() {
           </div>
         </FilmFrame>
 
-        {/* Frame 03 — Sub-message */}
-        <FilmFrame frameNumber={3} label="JULY 3RD" direction="up" delay={600}>
+        {/* Scene 03 — Message (slides from left) */}
+        <FilmFrame frameNumber={3} label="JULY 3RD" direction="left" delay={600}>
           <div className="glass-card rounded-2xl px-7 py-4 max-w-sm shadow-lg animate-card-float">
             <p className="text-pink-500 text-base leading-relaxed">
               Until July 3rd — a day made just for you{" "}
-              <span className="animate-heartbeat inline-block" style={{ filter: "drop-shadow(0 0 6px #ec4899)" }}>♥</span>
+              <span className="animate-heartbeat inline-block"
+                style={{ filter: "drop-shadow(0 0 6px #ec4899)" }}>♥</span>
             </p>
           </div>
         </FilmFrame>
@@ -177,8 +178,12 @@ export default function CountdownPage() {
         <div className="flex gap-2">
           {[...Array(5)].map((_, i) => (
             <div key={i} className="rounded-full bg-pink-400"
-              style={{ width: 4 + i * 2, height: 4 + i * 2, opacity: 0.2 + i * 0.18,
-                animation: `twinkle ${1.5 + i * 0.3}s ease-in-out infinite`, animationDelay: `${i * 0.25}s` }} />
+              style={{
+                width: 4 + i * 2, height: 4 + i * 2,
+                opacity: 0.2 + i * 0.18,
+                animation: `twinkle ${1.5 + i * 0.3}s ease-in-out infinite`,
+                animationDelay: `${i * 0.25}s`,
+              }} />
           ))}
         </div>
       </div>

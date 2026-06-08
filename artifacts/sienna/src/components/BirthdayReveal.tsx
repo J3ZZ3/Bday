@@ -6,24 +6,24 @@ import GlowOrbs from "@/components/GlowOrbs";
 import LoveNoteModal from "@/components/LoveNoteModal";
 import FilmFrame from "@/components/FilmFrame";
 
-/* ── Data ─────────────────────────────────────────────────── */
+/* ── Data ────────────────────────────────────────────────── */
 
 const FAVORITES = [
-  { icon: "📖", label: "Twisted Hate Series", sublabel: "Her current obsession",    gradient: "from-rose-200 via-pink-100 to-red-200",      accent: "#f43f5e", pattern: "◆ ◇ ◆ ◇" },
-  { icon: "💜", label: "BTS",                  sublabel: "Army for life",             gradient: "from-violet-200 via-purple-100 to-fuchsia-200", accent: "#a855f7", pattern: "★ ✦ ★ ✦" },
-  { icon: "😊", label: "Horimiya",              sublabel: "The best love story",      gradient: "from-sky-200 via-blue-100 to-indigo-200",       accent: "#6366f1", pattern: "✿ ❀ ✿ ❀" },
-  { icon: "🐾", label: "Adorable Cats",         sublabel: "Softest creatures ever",   gradient: "from-amber-200 via-orange-100 to-yellow-200",   accent: "#f59e0b", pattern: "♡ ♥ ♡ ♥" },
-  { icon: "✈️", label: "Traveling",             sublabel: "Exploring the world",      gradient: "from-emerald-200 via-teal-100 to-cyan-200",     accent: "#10b981", pattern: "· ✦ · ✦" },
+  { icon: "📖", label: "Twisted Hate Series", sublabel: "Her current obsession",   gradient: "from-rose-200 via-pink-100 to-red-200",       accent: "#f43f5e", pattern: "◆ ◇ ◆ ◇" },
+  { icon: "💜", label: "BTS",                  sublabel: "Army for life",            gradient: "from-violet-200 via-purple-100 to-fuchsia-200", accent: "#a855f7", pattern: "★ ✦ ★ ✦" },
+  { icon: "😊", label: "Horimiya",              sublabel: "The best love story",     gradient: "from-sky-200 via-blue-100 to-indigo-200",       accent: "#6366f1", pattern: "✿ ❀ ✿ ❀" },
+  { icon: "🐾", label: "Adorable Cats",         sublabel: "Softest creatures ever",  gradient: "from-amber-200 via-orange-100 to-yellow-200",   accent: "#f59e0b", pattern: "♡ ♥ ♡ ♥" },
+  { icon: "✈️", label: "Traveling",             sublabel: "Exploring the world",     gradient: "from-emerald-200 via-teal-100 to-cyan-200",     accent: "#10b981", pattern: "· ✦ · ✦" },
 ];
 
 const MESSAGES = [
-  { from: "On your beauty",  emoji: "✨", gradient: "from-pink-50 to-rose-50",      accent: "#f43f5e",
+  { from: "On your beauty",   emoji: "✨", gradient: "from-pink-50 to-rose-50",     accent: "#f43f5e",
     text: "I could write a thousand pages and still not do justice to how stunning you are. There's something about you — the way your eyes catch the light, the way you laugh at your own jokes first — that makes every room feel warmer the moment you walk in. Happy Birthday, gorgeous." },
-  { from: "On the distance", emoji: "🌙", gradient: "from-violet-50 to-purple-50", accent: "#a855f7",
+  { from: "On the distance",  emoji: "🌙", gradient: "from-violet-50 to-purple-50", accent: "#a855f7",
     text: "Miles between us? Just a number. Every good morning text, every late-night call, every 'I miss you' has only made me want you closer. One day I'll celebrate your birthday in person — until then, just know I'm thinking about you every single second today." },
-  { from: "On what you love", emoji: "💜", gradient: "from-fuchsia-50 to-pink-50", accent: "#ec4899",
+  { from: "On what you love", emoji: "💜", gradient: "from-fuchsia-50 to-pink-50",  accent: "#ec4899",
     text: "A girl who reads twisted romance novels, cries over anime couples, screams along to BTS concerts, and melts at the sight of a random cat? That's not just your personality — that's a whole vibe. An irresistible one, by the way. Don't ever change a thing." },
-  { from: "Since March",     emoji: "🌸", gradient: "from-rose-50 to-fuchsia-50",  accent: "#f9a8d4",
+  { from: "Since March",      emoji: "🌸", gradient: "from-rose-50 to-fuchsia-50",  accent: "#f9a8d4",
     text: "A few months ago we were strangers. Now I can't imagine my day without you in it. You snuck up on me, Sienna — quietly, softly, completely. You became my favourite person without even trying. That's the best kind of magic." },
 ];
 
@@ -56,7 +56,7 @@ function FavCard({ fav, index }: { fav: typeof FAVORITES[0]; index: number }) {
   const [hovered, setHovered] = useState(false);
   return (
     <div
-      className="group relative rounded-3xl overflow-hidden"
+      className="relative rounded-3xl overflow-hidden"
       style={{
         animation: `scale-in 0.5s cubic-bezier(.34,1.56,.64,1) ${0.1 + index * 0.1}s both`,
         boxShadow: hovered ? `0 20px 60px ${fav.accent}40, 0 0 0 1px ${fav.accent}30` : "0 4px 20px rgba(0,0,0,0.06)",
@@ -67,19 +67,15 @@ function FavCard({ fav, index }: { fav: typeof FAVORITES[0]; index: number }) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <div className={`relative bg-gradient-to-br ${fav.gradient} h-36 flex flex-col items-center justify-center overflow-hidden`}>
-        <div className="absolute inset-0 flex items-center justify-center opacity-10 text-3xl tracking-widest select-none overflow-hidden">
-          {Array(6).fill(fav.pattern).join("  ")}
-        </div>
+      <div className={`relative bg-gradient-to-br ${fav.gradient} h-36 flex items-center justify-center overflow-hidden`}>
+        <div className="absolute inset-0 flex items-center justify-center opacity-10 text-3xl tracking-widest select-none">{Array(6).fill(fav.pattern).join("  ")}</div>
         <div className="absolute top-3 right-3 text-xs font-semibold tracking-widest opacity-40 uppercase" style={{ color: fav.accent }}>✦ fave</div>
         <div className="absolute bottom-2 left-3 text-[10px] font-medium opacity-30 tracking-wider" style={{ color: fav.accent }}>[ photo goes here ]</div>
         <span className="relative z-10 text-5xl select-none" style={{
           filter: `drop-shadow(0 4px 12px ${fav.accent}60)`,
           transform: hovered ? "scale(1.2) rotate(-8deg)" : "scale(1) rotate(0deg)",
           transition: "transform 0.4s cubic-bezier(.34,1.56,.64,1)",
-        }}>
-          {fav.icon}
-        </span>
+        }}>{fav.icon}</span>
       </div>
       <div className="glass-card px-4 py-3 border-t border-white/60">
         <p className="font-semibold text-sm text-gray-800 leading-snug">{fav.label}</p>
@@ -89,7 +85,7 @@ function FavCard({ fav, index }: { fav: typeof FAVORITES[0]; index: number }) {
   );
 }
 
-function MessageCard({ msg, index }: { msg: typeof MESSAGES[0]; index: number }) {
+function MessageCard({ msg }: { msg: typeof MESSAGES[0] }) {
   const [hovered, setHovered] = useState(false);
   return (
     <div
@@ -139,8 +135,8 @@ export default function BirthdayReveal() {
 
       <div className="relative z-10 max-w-2xl mx-auto px-4 py-16 flex flex-col gap-14">
 
-        {/* Frame 01 — Hero */}
-        <FilmFrame frameNumber={1} label="HAPPY BIRTHDAY" direction="center" delay={0}>
+        {/* Scene 01 — Hero (left) */}
+        <FilmFrame frameNumber={1} label="HAPPY BIRTHDAY" direction="left" delay={0}>
           <section className="text-center">
             <div className="mb-5 text-7xl" style={{
               animation: "scale-in 0.5s cubic-bezier(.34,1.56,.64,1) 0.1s both, heartbeat 1.6s ease-in-out 0.6s infinite",
@@ -160,8 +156,8 @@ export default function BirthdayReveal() {
           </section>
         </FilmFrame>
 
-        {/* Frame 02 — Favourites */}
-        <FilmFrame frameNumber={2} label="SIENNA'S WORLD" direction="left" delay={0}>
+        {/* Scene 02 — Favourites (right) */}
+        <FilmFrame frameNumber={2} label="SIENNA'S WORLD" direction="right" delay={0}>
           <section>
             <div className="flex items-center gap-3 mb-5">
               <div className="h-px flex-1 bg-gradient-to-r from-transparent to-pink-200" />
@@ -180,8 +176,8 @@ export default function BirthdayReveal() {
           </section>
         </FilmFrame>
 
-        {/* Frame 03 — Message 1 & 2 */}
-        <FilmFrame frameNumber={3} label="FOR YOU" direction="right" delay={0}>
+        {/* Scene 03 — Messages pt.1 (left) */}
+        <FilmFrame frameNumber={3} label="FOR YOU" direction="left" delay={0}>
           <section>
             <div className="flex items-center gap-3 mb-5">
               <div className="h-px flex-1 bg-gradient-to-r from-transparent to-pink-200" />
@@ -192,22 +188,22 @@ export default function BirthdayReveal() {
               <div className="h-px flex-1 bg-gradient-to-l from-transparent to-pink-200" />
             </div>
             <div className="flex flex-col gap-4">
-              {MESSAGES.slice(0, 2).map((msg, i) => <MessageCard key={i} msg={msg} index={i} />)}
+              {MESSAGES.slice(0, 2).map((msg, i) => <MessageCard key={i} msg={msg} />)}
             </div>
           </section>
         </FilmFrame>
 
-        {/* Frame 04 — Message 3 & 4 */}
-        <FilmFrame frameNumber={4} label="WITH LOVE" direction="left" delay={0}>
+        {/* Scene 04 — Messages pt.2 (right) */}
+        <FilmFrame frameNumber={4} label="WITH LOVE" direction="right" delay={0}>
           <section>
             <div className="flex flex-col gap-4">
-              {MESSAGES.slice(2).map((msg, i) => <MessageCard key={i + 2} msg={msg} index={i + 2} />)}
+              {MESSAGES.slice(2).map((msg, i) => <MessageCard key={i + 2} msg={msg} />)}
             </div>
           </section>
         </FilmFrame>
 
-        {/* Frame 05 — Love note CTA */}
-        <FilmFrame frameNumber={5} label="SECRET NOTE" direction="center" delay={0}>
+        {/* Scene 05 — CTA (left) */}
+        <FilmFrame frameNumber={5} label="SECRET NOTE" direction="left" delay={0}>
           <section className="text-center">
             <p className="text-pink-400 text-sm mb-5 italic">
               One more thing — just for your eyes...
@@ -232,8 +228,8 @@ export default function BirthdayReveal() {
           </section>
         </FilmFrame>
 
-        {/* Frame 06 — Footer */}
-        <FilmFrame frameNumber={6} label="THE END ♥" direction="up" delay={0}>
+        {/* Scene 06 — Footer (right) */}
+        <FilmFrame frameNumber={6} label="THE END ♥" direction="right" delay={0}>
           <section className="text-center pb-4">
             <div className="flex items-center justify-center gap-2 text-pink-400 text-sm font-medium">
               <span>Made with</span>
