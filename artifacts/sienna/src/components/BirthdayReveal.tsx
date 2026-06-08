@@ -216,30 +216,48 @@ export default function BirthdayReveal() {
               <div className="h-px flex-1 bg-gradient-to-l from-transparent to-pink-200" />
             </div>
 
+            {/* Outer wrapper — pink glow border */}
             <div
-              className="glass-card rounded-3xl overflow-hidden shadow-lg"
-              style={{ border: "1px solid rgba(244,114,182,0.25)", padding: "1px" }}
+              className="rounded-3xl overflow-hidden shadow-xl"
+              style={{
+                border: "1.5px solid rgba(244,114,182,0.45)",
+                boxShadow: "0 0 0 4px rgba(253,242,248,0.8), 0 8px 40px rgba(244,114,182,0.25)",
+              }}
             >
-              {/* Themed top bar */}
+              {/* Custom pink header */}
               <div
-                className="flex items-center gap-2 px-4 py-2.5 rounded-t-3xl"
-                style={{ background: "linear-gradient(90deg, rgba(219,39,119,0.12), rgba(168,85,247,0.12))" }}
+                className="flex items-center gap-2 px-4 py-3"
+                style={{
+                  background: "linear-gradient(90deg, #fce7f3, #fdf4ff, #fce7f3)",
+                  borderBottom: "1px solid rgba(244,114,182,0.2)",
+                }}
               >
-                <span style={{ fontSize: "16px", filter: "drop-shadow(0 0 4px #ec4899)" }}>🎧</span>
-                <span className="text-xs font-semibold tracking-widest uppercase text-pink-500">Made for us</span>
-                <span className="ml-auto text-xs text-pink-300 animate-heartbeat inline-block">♥</span>
+                <span style={{ fontSize: "16px", filter: "drop-shadow(0 0 5px #ec4899)" }}>🎧</span>
+                <span className="text-xs font-bold tracking-[0.25em] uppercase text-pink-500">Made For Us</span>
+                <div className="ml-auto flex items-center gap-1.5">
+                  {["♥","♥","♥"].map((h, i) => (
+                    <span key={i} className="text-pink-300 text-xs animate-heartbeat inline-block"
+                      style={{ animationDelay: `${i * 0.2}s`, filter: "drop-shadow(0 0 3px #f9a8d4)" }}>{h}</span>
+                  ))}
+                </div>
               </div>
 
-              {/* Spotify embed — theme=0 gives dark player which contrasts nicely */}
-              <iframe
-                style={{ borderRadius: "0 0 24px 24px", display: "block" }}
-                src="https://open.spotify.com/embed/playlist/4gprUU6LyEh2cK3FyhRJYS?utm_source=generator"
-                width="100%"
-                height="352"
-                frameBorder="0"
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                loading="lazy"
-              />
+              {/* Spotify iframe — hue-rotated to shift green → pink */}
+              <div style={{ position: "relative" }}>
+                <iframe
+                  style={{
+                    display: "block",
+                    filter: "hue-rotate(189deg) saturate(1.35) brightness(1.08)",
+                    borderRadius: "0 0 22px 22px",
+                  }}
+                  src="https://open.spotify.com/embed/playlist/4gprUU6LyEh2cK3FyhRJYS?utm_source=generator&theme=0"
+                  width="100%"
+                  height="352"
+                  frameBorder="0"
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  loading="lazy"
+                />
+              </div>
             </div>
           </section>
         </FilmFrame>
