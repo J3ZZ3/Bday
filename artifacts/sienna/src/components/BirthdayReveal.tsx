@@ -5,6 +5,7 @@ import StarField from "@/components/StarField";
 import GlowOrbs from "@/components/GlowOrbs";
 import LoveNoteModal from "@/components/LoveNoteModal";
 import FilmFrame from "@/components/FilmFrame";
+import AutoplayMusic from "@/components/AutoplayMusic";
 
 /* ── Data ────────────────────────────────────────────────── */
 
@@ -132,6 +133,7 @@ export default function BirthdayReveal() {
       <GlowOrbs />
       <FloatingPetals count={30} />
       {confetti && <ConfettiBlast />}
+      <AutoplayMusic />
 
       <div className="relative z-10 max-w-2xl mx-auto px-4 py-16 flex flex-col gap-14">
 
