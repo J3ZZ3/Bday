@@ -68,7 +68,7 @@ export default function BirthdaySite() {
         {showBirthday ? <BirthdayReveal /> : <CountdownPage />}
       </div>
 
-      <button
+      {/* <button
         onClick={handleToggle}
         disabled={transitioning}
         className="fixed bottom-4 right-4 z-[9998] flex items-center gap-2 bg-black/70 hover:bg-black/90 disabled:opacity-40 text-white text-xs font-mono px-4 py-2.5 rounded-full shadow-xl backdrop-blur-sm transition-all hover:scale-105 active:scale-95"
@@ -77,7 +77,7 @@ export default function BirthdaySite() {
         {showBirthday
           ? <><span>🔒</span> Preview: Birthday ON</>
           : <><span>🎂</span> Preview: Birthday OFF</>}
-      </button>
+      </button> */}
     </div>
   );
 }
