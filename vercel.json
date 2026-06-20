@@ -1,0 +1,10 @@
+{
+  "buildCommand": "pnpm --filter @workspace/sienna run build",
+  "outputDirectory": "artifacts/sienna/dist/public",
+  "installCommand": "pnpm install",
+  "framework": null,
+  "env": {
+    "PORT": "5173",
+    "BASE_PATH": "/"
+  }
+}
